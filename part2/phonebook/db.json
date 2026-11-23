@@ -14,6 +14,26 @@
       "name": "Dan Abramov",
       "number": "12-43-234345",
       "id": "3"
+    },
+    {
+      "name": "kalle",
+      "number": "",
+      "id": "Otqid0x2dfU"
+    },
+    {
+      "name": "nale",
+      "number": "",
+      "id": "pioDilFoKws"
+    },
+    {
+      "name": "bale",
+      "number": "",
+      "id": "CSWAQ-fqwP8"
+    },
+    {
+      "name": "vale",
+      "number": "",
+      "id": "cs94iFzTetI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
