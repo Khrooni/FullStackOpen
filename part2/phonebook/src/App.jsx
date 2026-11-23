@@ -21,8 +21,8 @@ const App = () => {
     })
   }, [])
 
-  const showNotification = (message) => {
-    setNotification(message)
+  const showNotification = (message, type = 'success') => {
+    setNotification({ message, type })
     setTimeout(() => {
       setNotification(null)
     }, 5000)
@@ -40,6 +40,13 @@ const App = () => {
         showNotification(`Updated ${existingPerson.name}'s phone number`)
         setNewName('')
         setNewNumber('')
+      })
+      .catch(error => {
+        showNotification(
+          `Information of ${existingPerson.name} has already been removed from server`,
+          'error'
+        )
+        setPersons(persons.filter(person => person.id !== existingPerson.id))
       })
   }
 
@@ -81,6 +88,13 @@ const App = () => {
         .then(() => {
           setPersons(persons.filter(person => person.id !== id))
         })
+        .catch(error => {
+          showNotification(
+            `Information of ${person.name} has already been removed from server`,
+            'error'
+          )
+          setPersons(persons.filter(person => person.id !== id))
+        })
     }
   }
 
@@ -107,7 +121,10 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
 
-      <Notification message={notification} />
+      <Notification
+        message={notification?.message}
+        type={notification?.type}
+      />
 
       <Filter
         filter={filter}
